@@ -98,6 +98,11 @@ class Scratch {
             FastFourierTransformer fourierTransformer = new FastFourierTransformer(DftNormalization.STANDARD);
             // тут не используется window function, так как разницы между результатом с ней и без неё нет.
             Complex[] transform = fourierTransformer.transform(foreheadColors, TransformType.INVERSE);
+            int maxIndex = getMaxIndex(transform);
+            return freqToIndexMap.get(maxIndex).intValue();
+        }
+
+        private int getMaxIndex(Complex[] transform) {
             double max = 0;
             int maxIndex = -1;
             for (Map.Entry<Integer, Double> indexFreqPair : freqToIndexMap.entrySet()) {
@@ -108,7 +113,7 @@ class Scratch {
                     maxIndex = index;
                 }
             }
-            return freqToIndexMap.get(maxIndex).intValue();
+            return maxIndex;
         }
 
         public void destroy() {
