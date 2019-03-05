@@ -1,12 +1,11 @@
-import java.util.ArrayList;
-
 public class Sand {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        Integer integer = new Integer(1345);
-        list.add(integer);
-        integer = new Integer(1555);
-        list.add(integer);
-        System.out.println(list.toString());
+        long stamp = System.currentTimeMillis();
+        double realTime = 0;
+        for (int i = 0; i < 256; i++) {
+//            System.out.print(String.format("%dL, ", (long) realTime));
+            System.out.println(i + " " + realTime);
+            realTime += 1000.0/30;
+        }
     }
 }
